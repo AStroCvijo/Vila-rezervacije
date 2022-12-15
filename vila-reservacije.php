@@ -1,30 +1,3 @@
-<?php
-  if(isset($_POST['ime']) && isset($_POST['email']) && isset($_POST['telefon']))
-  {
-    $ime=$_POST['ime'];
-    $email=$_POST['email'];
-    $telefon=$_POST['telefon'];
-    $datum=$_POST['datum'];
-    $vrijeme=$_POST['vrijeme'];
-    $vrsta=$_POST['vrsta_tretmana'];
-    $napomena=$_POST['napomena'];
-    $pol=$_POST['gender'];
-
-    $to="cvijanovicjovan0@gmail.com";
-    $body="";
-    $body.="Ime: ".$ime. "\r\n";
-    $body.="Email: ".$email. "\r\n";
-    $body.="Telefon: ".$telefon. "\r\n";
-    $body.="Datum: ".$datum. "\r\n";
-    $body.="Vrijeme: ".$vrijeme. "\r\n";
-    $body.="Vrsta tretmana: ".$vrsta. "\r\n";
-    $body.="Napomena: ".$napomena. "\r\n";
-    $body.="Pol: ".$pol. "\r\n";
-
-    mail($to,"Rezervacija",$body);
-  }
-?>
-
 <!DOCTYPE html>
 <!---Coding By CodingLab | www.codinglabweb.com--->
 <html lang="en">
@@ -216,7 +189,7 @@
             <label>Vrsta tretmana</label>
             <select class="input-time" name="vrsta_tretmana" id="">
               <option value="DEPLIACIJA">DEPLIACIJA</option>
-              <option value="1MANIKIR I PEDIKIR1">MANIKIR I PEDIKIR</option>
+              <option value="MANIKIR I PEDIKIR">MANIKIR I PEDIKIR</option>
               <option value="MASAŽA">MASAŽA</option>
               <option value="LICE">LICE</option>
               <option value="NJEGUJUĆI TRETMANI">NJEGUJUĆI TRETMANI</option>
@@ -235,12 +208,12 @@
           <h3>Pol</h3>
           <div class="gender-option">
             <div class="gender">
-              <input type="radio" id="check-male" name="gender" checked />
-              <label for="check-male">muško</label>
+              <input type="radio" id="check-male" name="gender" checked value="žensko"/>
+              <label for="check-male">žensko</label>
             </div>
             <div class="gender">
-              <input type="radio" id="check-female" name="gender" />
-              <label for="check-female">žensko</label>
+              <input type="radio" id="check-female" name="gender" value="muško"/>
+              <label for="check-female">muško</label>
             </div>
           </div>
         </div>
@@ -250,6 +223,12 @@
         <?php
           if(isset($_POST['datum']) and isset($_POST['vrijeme']))
           {
+            $ime=$_POST['ime'];
+            $email=$_POST['email'];
+            $telefon=$_POST['telefon'];
+            $vrsta=$_POST['vrsta_tretmana'];
+            $napomena=$_POST['napomena'];
+            $pol=$_POST['gender'];
             $dat=$_POST['datum'];
             $time=$_POST['vrijeme'];
             $datetime="";
@@ -258,8 +237,9 @@
             if($link === false){
                 die("ERROR: Could not connect. " . mysqli_connect_error());
             }
+            
             $sql = "INSERT INTO rezervacije
-                    VALUES ('$datetime')";
+                    VALUES ('$datetime','$ime','$email','$telefon','$vrsta','$napomena','$pol')";
             if(mysqli_query($link, $sql)){
                 echo "Zahtjev poslat!";
             } else{
