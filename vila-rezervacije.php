@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Registration Form in HTML CSS</title>
-    <!---Custom CSS File--->
     <link rel="stylesheet" href="vila-reservacije.css" />
 
     <style>
-      /* Import Google font - Poppins */
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
       * {
         margin: 0;
@@ -135,7 +133,6 @@
       .form button:hover {
         background: #67C077;
       }
-      /*Responsive*/
       @media screen and (max-width: 500px) {
         .form .column {
           flex-wrap: wrap;
