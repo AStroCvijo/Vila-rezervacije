@@ -230,19 +230,21 @@
             $time=$_POST['vrijeme'];
             $datetime="";
             $datetime=$datetime.$dat." ".$time.":00:00";
-            $link = mysqli_connect("localhost", "root", "", "vila-rezervacije");
-            if($link === false){
-                die("ERROR: Could not connect. " . mysqli_connect_error());
+
+
+            $con = mysql_connect("localhost", "root", "");
+            $db = mysql_select_db("vila-rezervacije", $con) or die("error");
+            $query = "INSERT INTO rezervacije
+            VALUES ('$datetime','$ime','$email','$telefon','$vrsta','$napomena','$pol')";
+            mysql_query("SET NAMES utf8");
+            if(mysql_query($query)){
+              echo"Zahtjev poslat!";
             }
-            
-            $sql = "INSERT INTO rezervacije
-                    VALUES ('$datetime','$ime','$email','$telefon','$vrsta','$napomena','$pol')";
-            if(mysqli_query($link, $sql)){
-                echo "Zahtjev poslat!";
-            } else{
-                echo "Termin je zauzet!";
+            else
+            {
+              echo"Termin je zauzet!"; 
             }
-            mysqli_close($link);    
+
           }
         ?>
 
@@ -251,4 +253,3 @@
     </section>
   </body>
 </html>
-
