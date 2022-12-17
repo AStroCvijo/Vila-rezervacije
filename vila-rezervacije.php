@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Registration Form in HTML CSS</title>
+    <title>Rezervacija</title>
     <link rel="stylesheet" href="vila-reservacije.css" />
 
     <style>
@@ -149,7 +149,7 @@
     <section class="container">
       <header>Rezervacija</header>
 
-      <form action="vila-reservacije.php" class="form" method="POST">
+      <form action="vila-rezervacije.html" class="form" method="POST">
         <div class="input-box">
           <label>Puno ime</label>
           <input name="ime" type="text" placeholder="Unesite puno ime" maxlength="30" required />
