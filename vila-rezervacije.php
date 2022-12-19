@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Rezervacija</title>
     <link rel="stylesheet" href="vila-reservacije.css" />
-
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
       * {
@@ -21,7 +22,7 @@
         align-items: center;
         justify-content: center;
         padding: 20px;
-        background: #B4DBBB;
+        background: #3c8047;
       }
       .container {
         position: relative;
@@ -130,7 +131,7 @@
         background: #B4DBBB;
       }
       .form button:hover {
-        background: #67C077;
+        background: #3c8047;
       }
       @media screen and (max-width: 500px) {
         .form .column {
@@ -149,7 +150,7 @@
     <section class="container">
       <header>Rezervacija</header>
 
-      <form action="vila-rezervacije.html" class="form" method="POST">
+      <form action="vila-rezervacije.php" class="form" method="POST">
         <div class="input-box">
           <label>Puno ime</label>
           <input name="ime" type="text" placeholder="Unesite puno ime" maxlength="30" required />
@@ -185,12 +186,13 @@
             <label>Vrsta tretmana</label>
             <select class="input-time" name="vrsta_tretmana" id="">
               <option value="DEPLIACIJA">DEPLIACIJA</option>
-              <option value="MANIKIR I PEDIKIR">MANIKIR I PEDIKIR</option>
+              <option value="MANIKIR">MANIKIR</option>
+              <option value="PEDIKIR">PEDIKIR</option>
               <option value="MASAŽA">MASAŽA</option>
               <option value="LICE">LICE</option>
-              <option value="NJEGUJUĆI TRETMANI">NJEGUJUĆI TRETMANI</option>
+              <option value="NJEGUJUĆI TRETMAN">NJEGUJUĆI TRETMAN</option>
               <option value="DEPLIACIJA">DEPLIACIJA</option>
-              <option value="HIGIJENSKI TRETMAMANI">HIGIJENSKI TRETMAMANI</option>
+              <option value="HIGIJENSKI TRETMAMAN">HIGIJENSKI TRETMAMAN</option>
             </select>
           </div>
         </div>
@@ -237,11 +239,11 @@
             VALUES ('$datetime','$ime','$email','$telefon','$vrsta','$napomena','$pol')";
             mysql_query("SET NAMES utf8");
             if(mysql_query($query)){
-              echo"Zahtjev poslat!";
+              header('location:zahtjev-poslat.php');
             }
             else
             {
-              echo"Termin je zauzet!"; 
+              header('location:termin-zauzet.php');
             }
 
           }
